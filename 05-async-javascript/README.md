@@ -54,3 +54,37 @@ Callback patterns are not synchronous looking async pattern actually which is no
 ### 3. Nested callback - callback hell
 
 Nested callback is very hard to understand because of its indentation and its hard to read.
+
+## 3. Promise Foundation
+
+Callback pattern has one major issue **Inversion of control**, Promises is a great pattern to handle asynchronous code, and it solves a problem of **Inversion of control** or **Trust issues** by taking control back, Promises can:
+
+- Only resolved once
+- Either success or Error
+- Messages passes/kept
+- Exceptions become errors
+- Immutable once resolved
+
+```js
+function trackCheckout(info) {
+    return new Promise(resolve, reject) {
+        // attempt to track the checkout
+
+        // if successful, call resolve()
+        // otherwise, call reject(error)
+    }
+}
+
+function finish() {
+    chargeCreditCard(purchaseInfo);
+    showThankYouPage();
+}
+
+function error(err) {
+    logStatsError(err);
+    finish();
+}
+
+var promise = trackCheckout(purchaseInfo);
+promise.then(finish, error);
+```
