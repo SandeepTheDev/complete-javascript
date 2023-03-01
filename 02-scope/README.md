@@ -30,7 +30,7 @@ JavaScript use **Lexical scoping** to resolve the identifiers in program. JavaSc
 }
 
 otherClass();
-ask();
+ask(); // ReferenceError
 ```
 
 ```js
@@ -40,6 +40,8 @@ ask();
         🟢 Function scope `ask`
             🟡 block scope
 ```
+
+## Lexical scope
 
 **Lexical scope means that a function can reference a variable outside of its scope and it just goes up the scope chain to find it.**
 
