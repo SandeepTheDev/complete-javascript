@@ -8,4 +8,4 @@ JavaScript's code runs on a single thread that means it only execute one line at
 
 ## What is concurrency?
 
-![Concurrency event loop](https://github.com/SandeepTheDev/javascript/blob/main/assets/concurrency-event-loop.png)
+![Concurrency event loop](https://github.com/SandeepTheDev/javascript/blob/main/assets/concurrency-event-loop.svg)
