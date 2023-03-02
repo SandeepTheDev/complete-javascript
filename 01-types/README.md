@@ -1,14 +1,14 @@
 # Types - Table of content
 
-- [Types in Javascript](https://github.com/SandeepTheDev/javascript/tree/main/01-types#types)
+- [Types in Javascript](https://github.com/SandeepTheDev/complete-javascript/tree/main/01-types#types)
 
-- [`typeof` operator](https://github.com/SandeepTheDev/javascript/tree/main/01-types#typeof-operator)
+- [`typeof` operator](https://github.com/SandeepTheDev/complete-javascript/tree/main/01-types#typeof-operator)
 
-- [Fundamental Objects](https://github.com/SandeepTheDev/javascript/tree/main/01-types#fundamental-objects)
+- [Fundamental Objects](https://github.com/SandeepTheDev/complete-javascript/tree/main/01-types#fundamental-objects)
 
-- [Emptiness in JavaScript](https://github.com/SandeepTheDev/javascript/tree/main/01-types#emptiness-in-javascript)
+- [Emptiness in JavaScript](https://github.com/SandeepTheDev/complete-javascript/tree/main/01-types#emptiness-in-javascript)
 
-- [Special values - NaN & Negative zero](https://github.com/SandeepTheDev/javascript/tree/main/01-types#special-values-nan-and-negative-zero)
+- [Special values - NaN & Negative zero](https://github.com/SandeepTheDev/complete-javascript/tree/main/01-types#special-values-nan-and-negative-zero)
 
 ## Types
 

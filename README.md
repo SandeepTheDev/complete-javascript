@@ -1,14 +1,14 @@
 # Fundamentals of JavaScript - Table of content
 
-- [Types in JavaScript](https://github.com/SandeepTheDev/javascript/tree/main/01-types)
+- [Types in JavaScript](https://github.com/SandeepTheDev/complete-javascript/tree/main/01-types)
 
-- [Type Coercion](https://github.com/SandeepTheDev/javascript/tree/main/02-coercion)
+- [Type Coercion](https://github.com/SandeepTheDev/complete-javascript/tree/main/02-coercion)
 
-- [Scope](https://github.com/SandeepTheDev/javascript/tree/main/03-scope)
+- [Scope](https://github.com/SandeepTheDev/complete-javascript/tree/main/03-scope)
 
-- [Objects](https://github.com/SandeepTheDev/javascript/tree/main/04-objects)
+- [Objects](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects)
 
-- [Asynchronous JavaScript](https://github.com/SandeepTheDev/javascript/tree/main/05-async-javascript)
+- [Asynchronous JavaScript](https://github.com/SandeepTheDev/complete-javascript/tree/main/05-async-javascript)
 
 ## Questions
 

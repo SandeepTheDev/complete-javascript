@@ -1,67 +1,65 @@
-JavaScript is not a interpreted language but its a two pass system which means JavaScript parse the code first before it start executing. During first pass its setup a scope plan which gets a memory during execution of code.
+# Scope and Lexical scope
 
-# Scope
+To understand **scope** we need to first understand that Javascript is not a an interpreted language. **Javascript program runs in two phases**.
 
-Scoping is a concept in programming langauge that refers where to look for things (identifiers) at execution time. Mainly there are two types of scoping:
+- First phase: Javascript parse the code and setup scope.
+- Second phase: Javascript execute the code.
 
-- Lexical scoping (static scoping)
-- Dynamic scoping
+Scope means where to look for identifiers during execution time. **Javascript creates scope for functions and blocks (only in case of let and const)**. Scopes can be nested as well.
 
-JavaScript use **Lexical scoping** to resolve the identifiers in program. JavaScript's scope is determined at complied time and its fixed and predictable.
+## Coloured bucket analogy (setup of scope)
 
-👉 JavaScript creates scope for **functions** and **blocks** (only in case of let and const). Scopes can be nested as well.
+One of the important thing that happened during first phase is creation of scope plan, its just a plan and it gets a memory during second phase. **Coloured dot in front of identifiers representing the scope which they belongs to**.
 
 ```js
-🔴 var teacher = "kyle";
+🔴 var domain = "fullstackxp.com";
 
-🔴 function otherClass() {
-    🔵 var teacher = "Suzy"; // variable shadowing
+🔴 function openBrowser() {
+    🔵 var domain = "google.com"; // Variable shadowing
 
-    🔵 function ask(question) {
-        console.log(🔵 teacher, 🟢 question);
+    🔵 function search(query) {
+        console.log(🔵 domain, 🟢 query);
         {
             // Block scope (only in case let and const)
-            🟡 let question = "What is block scope?";
-            console.log(🟡 question);
+            🟡 let query = "What is block scope?";
+            console.log(🟡 query);
         }
     }
 
-    ask("Why?");
+    search("Why?");
 }
 
-otherClass();
-ask(); // ReferenceError
+openBrowser();
+search() // ReferenceError
 ```
 
 ```js
 // These are are the coloured bucket (functions & blocks)
-🔴 Global scope
-    🔵 Function scope `otherClass`
-        🟢 Function scope `ask`
-            🟡 block scope
+🔴 Global scope (attached identifiers: domain, openBrowser)
+    🔵 `openBrowser` scope (attached identifiers: domain, search)
+        🟢 `search` scope (attached identifiers: query)
+            🟡 block scope (attached identifiers: query)
+
 ```
 
 ## Lexical scope
 
-**Lexical scope means that a function can reference a variable outside of its scope and it just goes up the scope chain to find it.**
+Lexical scope means that a function can reference a variable outside of its scope and it just goes up the scope chain to find it.
 
 ## Dynamic global variables
 
-**Dynamic global variables are created at run-time** not at compiled time.
+Dynamic global variables are created at run-time not at compiled time. This program will not throw an error "query" will be created a run-time.
 
 ```js
-🔴 var teacher = "Kyle";
+🔴 var domain = "fullstackxp.com";
 
-🔴 function otherClass() {
-    🔴 teacher = "Suzy";
-    topic = "React"; // dynamic global variable crated at global scope: RED
-    console.log("Welcome!");
+🔴 function openBrowser() {
+    🔴 domain = "google.com";
+    query = "React"; // dynamic global variable crated at global scope: RED
+    console.log("What is react!");
 }
 
-🔴 otherClass();
-
-teacher; // Suzy
-topic; // React
+openBrowser();
 ```
 
 ## Strict mode
@@ -73,32 +71,26 @@ Strict mode throws an error which were silent in sloppy mode.
 - Cannot delete variable using delete operator.
 
 ```js
-var teacher = "Kyle";
+var domain = "fullstackxp.com";
 
-function otherClass() {
-  teacher = "Suzy";
-  topic = "React"; // ReferenceError
+function openBrowser() {
+  domain = "google.com";
+  query = "React"; // ReferenceError
   console.log("Welcome!");
 }
 
-otherClass();
+openBrowser();
 ```
 
 ## Undefined vs undeclared
 
 **Undefined** means a variable exists but at the moment it has no value. **Undeclared** means a variable doesn't exists in any of the scope that we have access to.
 
-## Key points to remember
-
-- Scope refers where to look for identifiers during execution. Lexical scoped language has a fixed and predictable scope.
-- JavaScript creates a scope plan during first phase and this plan used during execution phase.
-- non strict mode allows global dynamic variables.
-
-## Scope & function expressions
+# Scope & function expressions
 
 If the word `function` is literally the first thing in the statement its a function declaration and if it's not the first thing in the statement its a function expression.
 
-**Function delaration add their identifier to the enclosing scope whereas function expressions will add their indentifier to their own scope and also they are read only you cannot reassign to another value**.
+**Function declaration add their identifier to the enclosing scope whereas function expressions will add their identifier to their own scope and also they are read only you cannot reassign to another value**.
 
 ```js
 🔴 function teacher () {...}
@@ -121,19 +113,19 @@ Function expression can be:
 
 - Reliable function self-reference (recursion, etc): named function expression are more reliable self reference, its only accessible in their own scope and its a ready only.
 
-- More debuggable stack traces: naming function can make debugging process easy by showing up function name in stack trace instead of anonymous function.
+- More debug stack traces: naming function can make debugging process easy by showing up function name in stack trace instead of anonymous function.
 
 - Named functions are more self documenting code compared to anonymous function.
 
 👉 **Every single function has purpose and if every function has a purpose, it means every function has a name**.
 
-## Arrow function expressionss
+## Arrow function expressions
 
 Arrow function expression has a shorter syntax for declaring traditional function expression added in ES6 it can be also be named as well as anonymous.
 
-- Arrow function can be useful when you need lexical `this` behaviour.
+- Arrow function can be useful when you need lexical `this` behavior.
 - Arrow function don't have `arguments` or `super`.
-- Arrow funcion cannot be used as constructor calling them with `new` operator throws a TypeError.
+- Arrow function cannot be used as constructor calling them with `new` operator throws a TypeError.
 - Arrow functions cannot use `yield` within their body and cannot be created as generator functions.
 
 ## Function types hierarchy
@@ -142,11 +134,11 @@ Arrow function expression has a shorter syntax for declaring traditional functio
 
 ## Key points to remember
 
-- Function declaration attached their indentifier with enclosing scope.
+- Function declaration attached their identifier with enclosing scope.
 - Function expression attach their identifier to their on scope & its read only.
 - You should always always use named function expression instead of anonymous function expressions.
 
-**Principle of least privilege**: By default everything should be private, and only exposing minimal neccessary.
+**Principle of least privilege**: By default everything should be private, and only exposing minimal necessary.
 
 Scopes are great way to hide things that doesn't need to be exposed. By wrapping things inside the scope also solves the problem of name collision.
 
@@ -157,7 +149,7 @@ In JavaScript scopes can be created by using **function** and **block**.
 ```js
 var teacher = "Kyle";
 
-// IIFE not polluting global naming scpace
+// IIFE not polluting global naming space
 (function anotherTeacher() {
   var teacher = "Suzy";
   console.log(teacher); // Suzy
@@ -218,7 +210,7 @@ function formatStr(str) {
 
 ## const keyword
 
-Variable declared with `const` keyword cannot be redeclared or reassgin it but you can change or mutate the non primitive type values.
+Variable declared with `const` keyword cannot be redeclared or reassign it but you can change or mutate the non primitive type values.
 
 ```js
 // Primitive values with const
@@ -238,11 +230,11 @@ otherClass = "Suzy"; // TypeError: Assignment to constant variable
 
 ## What is hoisting?
 
-JavaScript is a **lexical scoped langauge** which means during first pass (parsing) it setup a scope for all identifiers in program with some placeholder (undefined) and when it start executing the code variables are already known at that time.
+JavaScript is a **lexical scoped language** which means during first pass (parsing) it setup a scope for all identifiers in program with some placeholder (undefined) and when it start executing the code variables are already known at that time.
 
 ## variable (with var) hoisting
 
-Variables declared with `var` intially initialized with undefined.
+Variables declared with `var` initially initialized with undefined.
 
 ```js
 student; // undefined
@@ -254,7 +246,7 @@ var teacher = "Kyle";
 
 ## Function declaration & expression hoisting
 
-Function declaration intially initialized with its definition or function body.
+Function declaration initially initialized with its definition or function body.
 
 ```js
 teacher(); // Kyle
@@ -273,7 +265,7 @@ var otherTeacher = function () {
 
 ## `let` and `const` hoisting
 
-Variables declare with `let` and `const` keyword do not get initialized during first pass it is in uninitialized state and it doesn't get initialized until it run accross the let or const declaration.
+Variables declare with `let` and `const` keyword do not get initialized during first pass it is in uninitialized state and it doesn't get initialized until it run across the let or const declaration.
 
 Accessing variable before initialization throws an error TDZ (temporal dead zone).
 
@@ -343,7 +335,7 @@ for (var i = 1; i <= 3; i++) {
 **Because each function is closing over `i` variable they all are pointing the same variable to solve this issue we need different variable for each iteration so that each function can close over different variable instead of one**.
 
 ```js
-// let is block scope type so for each iteration there will be a different i everytime
+// let is block scope type so for each iteration there will be a different i every time.
 for (var i = 1; i <= 3; i++) {
   let j = i;
   setTimeout(function () {
