@@ -10,7 +10,7 @@ JavaScript's code runs on a single thread that means it only execute one line at
 
 Parallelism is when two task are executing at the same time in two different threads, In concurrency there is only one thread that executes the task and it switch the multiple task which makes it concurrent.
 
-![Parallelism vs Concurrency](https://github.com/SandeepTheDev/javascript/blob/main/assets/parallelism-concurrency.svg)
+![Parallelism vs Concurrency](https://github.com/SandeepTheDev/javascript/blob/main/assets/parallelism-vs-concurrency.svg)
 
 ### Event loop handles the concurrency
 
