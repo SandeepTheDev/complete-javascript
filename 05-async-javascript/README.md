@@ -16,7 +16,7 @@ Parallelism is when two task are executing at the same time in two different thr
 
 ![Concurrency event loop](https://github.com/SandeepTheDev/javascript/blob/main/assets/concurrency-event-loop.svg)
 
-## 1. Callbacks
+## 1. Callbacks Pattern
 
 Callbacks are the simplest way to deal with asynchronous. Callback is just a function that is passed as an argument to the function and it will be called later at some point.
 
@@ -30,7 +30,7 @@ setTimeout(function () {
 
 Callback hell is not just about indentation its more than that.
 
-### 1. Inversion of control
+### Inversion of control
 
 There is part of program that you are in control and there is another part of code that you are not in control of executing.
 
@@ -53,15 +53,15 @@ trackCheckout(purchaseInfo, function finish() {
 
 Because of inversion of control you have no control on executing the callback `finish` what if its call **too early**, **too many times** or **not call at all** its very inevitable that callbacks have trust issues.
 
-### 2. Not Sync-looking Async
+### Not Sync-looking Async
 
 Callback patterns are not synchronous looking async pattern actually which is not making any sense but there is a way you can write a Async code in synchronous sequential blocking way.
 
-### 3. Nested callback - callback hell
+### Nested callback - callback hell
 
 Nested callback is very hard to understand because of its indentation and its hard to read.
 
-## 3. Promises
+## 2. Promise Pattern
 
 Callback pattern has one major issue **Inversion of control**, Promises is a great pattern to handle asynchronous code, and it solves a problem of **Inversion of control** or **Trust issues** by taking control back, Promises can:
 
@@ -122,3 +122,11 @@ Promise.any() takes array of promises and returned the first promised that resol
 ### Promise timeout
 
 You can add timeout for each promise and reject it if its not resolved in expected time or taking too much time.
+
+## Async & await syntax - more cleaner way
+
+Async/await syntax makes async code looks like a synchronous code to use `await` function must needs to be a `async`.
+
+### try catch block
+
+`try`...`catch` block can be used to handle errors.

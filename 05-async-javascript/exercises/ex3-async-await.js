@@ -2,7 +2,7 @@
  * Instructions
  *
  * This exercise calls for you to write some async flow-control code. To start
- * off with, you'll use promises only.
+ * off with, you'll use promises with async await.
  *
  * Expected behavior:
  * - Request all 3 files at the same time (in "parallel").
@@ -41,33 +41,14 @@ var p1 = getFile("file1");
 var p2 = getFile("file2");
 var p3 = getFile("file3");
 
-p1.then(output)
-  .then(function () {
-    return p2;
-  })
-  .then(output)
-  .then(function () {
-    return p3;
-  })
-  .then(output)
-  .then(function () {
-    output("Complete!");
-  });
+async function printPromises() {
+  var p1result = await p1;
+  console.log(p1result);
+  var p2result = await p2;
+  console.log(p2result);
+  var p3result = await p3;
+  console.log(p3result);
+  console.log("Completed!");
+}
 
-// [Optional] Promise utility
-// here we can have any number of urls & its not hard coded.
-["file1", "file2", "file3"]
-  .map(getFile)
-  .reduce(
-    function combine(chain, pr) {
-      return chain
-        .then(function chainPr() {
-          return pr;
-        })
-        .then(output);
-    },
-    Promise.resolve() // fulfilled promise to start chain
-  )
-  .then(function () {
-    output("Complete!");
-  });
+printPromises();
