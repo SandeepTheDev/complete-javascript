@@ -1,0 +1,21 @@
+{
+  "name": "complete-javascript",
+  "version": "1.0.0",
+  "description": "Complete JavaScript",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandeepTheDev/complete-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandeepTheDev/complete-javascript/issues"
+  },
+  "homepage": "https://github.com/SandeepTheDev/complete-javascript#readme"
+}
