@@ -32,15 +32,15 @@ Types in JavaScript can be divided into two categories, **In JavaScript, variabl
 
 `typeof` operator is used to determine the type of a value, **`typeof` operator always returns string**. `typeof` operator is the only operator in JavaScript that can reference a variable which doesn't exist without throwing an error.
 
-| Primitive Types | `typeof` return value            | Object wrapper |
-| --------------- | -------------------------------- | -------------- |
-| `null`          | `typeof null` "object"           | N/A            |
-| `undefined`     | `typeof v` "undefined"           | N/A            |
-| `boolean`       | `typeof true` "boolean"          | `Boolean`      |
-| `number`        | `typeof 10` "number"             | `Number`       |
-| `bigint`        | `typeof 10n` "bigint"            | `BigInt`       |
-| `string`        | `typeof 'Hello World!'` "string" | `String`       |
-| `symbol`        | `typeof Symbol()` "symbol"       | `Symbol`       |
+```js
+typeof null; // "object"
+typeof doNotExist; // "undefined"
+typeof true; // "boolean"
+typeof 10; //"number"
+typeof 10n; //"bigint"
+typeof "Hello World!"; //"string"
+typeof Symbol(); //"symbol"
+```
 
 ### Edge cases with `typeof` operator
 
