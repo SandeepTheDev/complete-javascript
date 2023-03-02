@@ -1,8 +1,20 @@
-# Types in JavaScript
+# Types - Table of content
 
-JavaScript types can be divided into two categories **primitive (value types)** and **non-primitive (reference types)**
+- [Types in Javascript](https://github.com/SandeepTheDev/javascript/tree/main/01-types#types)
 
-### Primitive types
+- [`typeof` operator](https://github.com/SandeepTheDev/javascript/tree/main/01-types#typeof-operator)
+
+- [Fundamental Objects](https://github.com/SandeepTheDev/javascript/tree/main/01-types#fundamental-objects)
+
+- [Emptiness in JavaScript](https://github.com/SandeepTheDev/javascript/tree/main/01-types#emptiness-in-javascript)
+
+- [Special values - NaN & Negative zero](https://github.com/SandeepTheDev/javascript/tree/main/01-types#special-values-nan-and-negative-zero)
+
+## Types
+
+Types in JavaScript can be divided into two categories, **In JavaScript, variables don't have types values do.**
+
+### 1. Primitive Types (Value Types)
 
 - `undefined`
 - `string`
@@ -12,11 +24,9 @@ JavaScript types can be divided into two categories **primitive (value types)** 
 - `symbol`
 - `bigint`
 
-### Non Primitive
+### 2. Non Primitive (Reference Types)
 
 - `object` (arrays, functions and etc.)
-
-👉 **In JavaScript, variables don't have types values do.**
 
 ## `typeof` operator
 
@@ -80,7 +90,7 @@ In addition to primitive values, JavaScript also have a object representations f
 
 Within primitive types JavaScript has some special values like **NaN** and **Negative zero**.
 
-## NaN
+### NaN
 
 **NaN** naming convention is little confusing its stands for **not-a-number** but actually its a number.
 
@@ -102,7 +112,7 @@ var v = 0 * Infinity;
 NaN === NaN; // false
 ```
 
-## How to check for NaN
+### How to check for NaN
 
 JavaScript has two built in method to check for NaN
 
@@ -124,7 +134,7 @@ Number.isNaN(NaN); // true
 Number.isNaN("hello world"); // false
 ```
 
-## Negative zero
+### Negative zero
 
 Negative zero is another special value in JavaScript, operation on it can cause unexpected result like:
 
