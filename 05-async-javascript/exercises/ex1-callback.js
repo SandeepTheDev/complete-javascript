@@ -32,6 +32,7 @@ function output(text) {
 function getFile(file) {
   fakeAjax(file, function (text) {
     // because of closure `handleResponse` is closed over `file`
+    // handleResponse will be called thrice
     handleResponse(file, text);
   });
 }
