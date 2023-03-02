@@ -1,16 +1,26 @@
-# Introduction
+# Fundamentals of JavaScript - Table of content
 
-- JavaScript is a **synchronous, single threaded**, **Dynamic typed language**. JavaScript has **first class function**.
+- [Types in JavaScript](https://github.com/SandeepTheDev/javascript/tree/main/01-types)
 
-👉 **First class function** means function is just like any other variable: can be passed as argument, return by another function and can be assign as a value to a variable.
+- [Type Coercion](https://github.com/SandeepTheDev/javascript/tree/main/02-coercion)
 
-## ECMAScript and JavaScript
+- [Scope](https://github.com/SandeepTheDev/javascript/tree/main/03-scope)
 
-ECMAScript is a specification, JavaScript is programming language that confirms to this specification. The first version of ECMAScript was released in 1997.
+- [Objects](https://github.com/SandeepTheDev/javascript/tree/main/04-objects)
 
-- ES6/ES2015 was released in 2015 it defines many new features.
+- [Asynchronous JavaScript](https://github.com/SandeepTheDev/javascript/tree/main/05-async-javascript)
 
-## How to add JavaScript in HTML
+## Questions
+
+1. **What is JavaScript?**
+
+JavaScript is a **synchronous, single threaded**, **Dynamic typed language**. JavaScript has **first class function**. **First class function** means function is just like any other variable: can be passed as argument, return by another function and can be assign as a value to a variable.
+
+2. **What is ECMAScript?**
+
+ECMAScript is a specification, JavaScript is programming language that confirms to this specification. The first version of ECMAScript was released in 1997. ES6/ES2015 was released in 2015 it defines many new features.
+
+3. **How to add JavaScript in HTML?**
 
 There are two ways to add JavaScript in HTML file. You can add JavaScript using `script` tag inside `head` or `body`. But it is not recommended to place `script` inside `head` with few exceptions.
 
@@ -19,7 +29,7 @@ Placing `script` in the end of `body` section gives you few advantages.
 - It doesn't block the HTML parsing.
 - HTML elements are available to script because it already parsed.
 
-## `<script>` vs `<script async>` vs `<script defer>`
+4. **What is `<script>` vs `<script async>` vs `<script defer>`?**
 
 **`<script>`** HTML file will be parsed until the `script` file is hit, at that point parsing will stop and a request will be made to fetch the file (if it's external). The script will then be executed before parsing is started.
 
