@@ -1,22 +1,34 @@
-# Async Patterns
+# Async Patterns - Table of content
+
+- [JavaScript's code runs on single thread](https://github.com/SandeepTheDev/complete-javascript/tree/main/05-async-javascript#javascripts-code-runs-on-single-thread)
+
+- [What is concurrency? (Parallelism vs Concurrency)](https://github.com/SandeepTheDev/complete-javascript/tree/main/05-async-javascript#what-is-concurrency-parallelism-vs-concurrency)
+
+- [Callback Pattern](https://github.com/SandeepTheDev/complete-javascript/tree/main/05-async-javascript#1-callback-pattern)
+
+- [Promise Pattern](https://github.com/SandeepTheDev/complete-javascript/tree/main/05-async-javascript#2-promise-pattern)
+
+- [Async/Await - Cleaner way of writing async code](https://github.com/SandeepTheDev/complete-javascript/tree/main/05-async-javascript#async--await-syntax---more-cleaner-way)
 
 There are bunch of async patterns to deal with asynchronous code let's walk through some of the important patterns that deals with asynchronous code.
 
-## JavaScript's code runs on single thread
+# JavaScript's code runs on single thread
 
 JavaScript's code runs on a single thread that means it only execute one line at a time. In theory you could spin multiple instances of the JavaScript engine on entirely separate thread that would look like multi threaded but they cannot communicate each other that's where web workers comes into picture web workers is a browser feature that makes it possible to run a script in background thread separate from main thread and then these workers can communicate with main thread using events.
 
-## What is concurrency? (Parallelism vs Concurrency)
+# What is concurrency? (Parallelism vs Concurrency)
 
 Parallelism is when two task are executing at the same time in two different threads, In concurrency there is only one thread that executes the task and it switch the multiple task which makes it concurrent.
 
 ![Parallelism vs Concurrency](https://github.com/SandeepTheDev/javascript/blob/main/assets/parallelism-vs-concurrency.svg)
 
-### Event loop handles the concurrency
+## Event loop handles the concurrency
+
+JavaScript is concurrent language it has only one call stack & only one task run at a time.
 
 ![Concurrency event loop](https://github.com/SandeepTheDev/javascript/blob/main/assets/concurrency-event-loop.svg)
 
-## 1. Callbacks Pattern
+# 1. Callback Pattern
 
 Callbacks are the simplest way to deal with asynchronous. Callback is just a function that is passed as an argument to the function and it will be called later at some point.
 
@@ -61,7 +73,7 @@ Callback patterns are not synchronous looking async pattern actually which is no
 
 Nested callback is very hard to understand because of its indentation and its hard to read.
 
-## 2. Promise Pattern
+# 2. Promise Pattern
 
 Callback pattern has one major issue **Inversion of control**, Promises is a great pattern to handle asynchronous code, and it solves a problem of **Inversion of control** or **Trust issues** by taking control back, Promises can:
 
@@ -95,13 +107,13 @@ var promise = trackCheckout(purchaseInfo);
 promise.then(finish, error);
 ```
 
-### Promise chaining - handling flow control
+## Promise chaining - handling flow control
 
 Every time `then` method is called it return its own promise by default its set to be resolved immediately, unless the previous step returns another promise. The next `then` gets the result from the previous `then` callback. `catch` going to get any type of error from any of the promise, if any promise gets any error its going to propagate to the end.
 
 👉 `then` takes two function `onResolved` and `onReject` to handle both resolve and reject.
 
-### Promise.all()
+## Promise.all()
 
 Promise.all() takes in an array of promises and will wait for all promises in the array to resolve. If any of the promise get rejected the main promise gets immediately rejected as well.
 
@@ -111,22 +123,22 @@ Promise.all([doTask1a(), doTask1b(), doTask1c()]).then(function (results) {
 });
 ```
 
-### Promise.race()
+## Promise.race()
 
 Promise.race() receives an array of promises, however it only waits for whichever promise in the array resolves or rejects first.
 
-### Promise.any()
+## Promise.any()
 
 Promise.any() takes array of promises and returned the first promised that resolved and in case if none of the promise gets resolved it reject the main promise
 
-### Promise timeout
+## Promise timeout
 
 You can add timeout for each promise and reject it if its not resolved in expected time or taking too much time.
 
-## Async & await syntax - more cleaner way
+# Async & await syntax - more cleaner way
 
 Async/await syntax makes async code looks like a synchronous code to use `await` function must needs to be a `async`.
 
-### try catch block
+## try catch block
 
 `try`...`catch` block can be used to handle errors.
