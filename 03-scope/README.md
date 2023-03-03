@@ -1,3 +1,15 @@
+# Scope - Table of content
+
+- [Scope and Lexical scope](https://github.com/SandeepTheDev/complete-javascript/tree/main/03-scope#scope-and-lexical-scope)
+
+- [Scope and Function expression](https://github.com/SandeepTheDev/complete-javascript/tree/main/03-scope#scope--function-expressions)
+
+- [Advance Scope](https://github.com/SandeepTheDev/complete-javascript/tree/main/03-scope#advance-scope)
+
+- [Closure](https://github.com/SandeepTheDev/complete-javascript/tree/main/03-scope#closure)
+
+- [Module](https://github.com/SandeepTheDev/complete-javascript/tree/main/03-scope#modules)
+
 # Scope and Lexical scope
 
 To understand **scope** we need to first understand that Javascript is not a an interpreted language. **Javascript program runs in two phases**.
@@ -12,7 +24,7 @@ Scope means where to look for identifiers during execution time. **Javascript cr
 One of the important thing that happened during first phase is creation of scope plan, its just a plan and it gets a memory during second phase. **Coloured dot in front of identifiers representing the scope which they belongs to**.
 
 ```js
-🔴 var domain = "fullstackxp.com";
+🔴 var domain = "facebook.com";
 
 🔴 function openBrowser() {
     🔵 var domain = "google.com"; // Variable shadowing
@@ -48,10 +60,10 @@ Lexical scope means that a function can reference a variable outside of its scop
 
 ## Dynamic global variables
 
-Dynamic global variables are created at run-time not at compiled time. This program will not throw an error "query" will be created a run-time.
+In non strict mode or sloppy mode, Dynamic global variables are created at run-time not at compiled time. This program will not throw an error "query" will be created a run-time.
 
 ```js
-🔴 var domain = "fullstackxp.com";
+🔴 var domain = "facebook.com";
 
 🔴 function openBrowser() {
     🔴 domain = "google.com";
@@ -71,7 +83,7 @@ Strict mode throws an error which were silent in sloppy mode.
 - Cannot delete variable using delete operator.
 
 ```js
-var domain = "fullstackxp.com";
+var domain = "facebook.com";
 
 function openBrowser() {
   domain = "google.com";
@@ -104,12 +116,11 @@ console.log(myTeacher);
 console.log(anotherTeacher); // ReferenceError
 ```
 
-Function expression can be:
+## Named vs Anonymous function expression
 
-- Named function expression
-- Anonymous function expression
+Function expression can be **Named function expression** and **Anonymous function expression**.
 
-👉 You should always, always use named function expressions because of the following reasons.
+**You should always, always use named function expressions because of the following reasons**.
 
 - Reliable function self-reference (recursion, etc): named function expression are more reliable self reference, its only accessible in their own scope and its a ready only.
 
@@ -132,15 +143,9 @@ Arrow function expression has a shorter syntax for declaring traditional functio
 
 **(Named) function declaration > named function expression > anonymous function expression**
 
-## Key points to remember
+# Advance scope
 
-- Function declaration attached their identifier with enclosing scope.
-- Function expression attach their identifier to their on scope & its read only.
-- You should always always use named function expression instead of anonymous function expressions.
-
-**Principle of least privilege**: By default everything should be private, and only exposing minimal necessary.
-
-Scopes are great way to hide things that doesn't need to be exposed. By wrapping things inside the scope also solves the problem of name collision.
+**Principle of least privilege**: By default everything should be private, and only exposing minimal necessary. Scopes are great way to hide things that doesn't need to be exposed. By wrapping things inside the scope also solves the problem of name collision.
 
 In JavaScript scopes can be created by using **function** and **block**.
 
@@ -289,13 +294,7 @@ let otherTeacher = function () {
 
 👉 You can take advantage of hoisting for function declaration by putting all function executable code at the top of each scope. While variable hoisting is not recommended you should declare all variables at the top of the each scope.
 
-## Key points to remember
-
-- Scopes are great way to hide things by using IIFE and block scope.
-- Block scope is only created when `let` or `var` used in it.
-- `let` is not a replacement of `var`.
-
-## Closure
+# Closure
 
 Closure is when a function **remembers** its lexical scope even when the function is executed outside that lexical scope. Lexical scope means that a function can reference a variable outside of its scope and it just goes up the scope chain to find it.
 
@@ -352,7 +351,7 @@ for (let i = 1; i <= 3; i++) {
 
 👉 It is inevitable for a language like JavaScript not to have a closure in it, because JavaScript is a lexical scoped language and have first class functions and it would be very weird if a function is return and it start loosing its original lexical scope.
 
-## Modules
+# Modules
 
 Modules encapsulate data and behavior (methods) together. The state (data) of a module is held by its methods via closure.
 
