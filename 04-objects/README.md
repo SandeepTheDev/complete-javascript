@@ -1,8 +1,8 @@
 # Objects (Oriented) - Table of contents
 
-- [The `this` keyword](https://github.com/SandeepTheDev/complete-javascript/tree/main/03-scope#the-this-keyword)
+- [The `this` keyword](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#the-this-keyword)
 
-- [Arrow function with `this`](https://github.com/SandeepTheDev/complete-javascript/tree/main/03-scope#arrow-function-&-lexical-this)
+- [Arrow function with `this`](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#arrow-function--lexical-this)
 
 2. `class {}`
 3. Prototypes
@@ -171,9 +171,11 @@ new (workshop.ask.bind(workshop))("What does this do?");
 
 # Arrow Function & Lexical `this`
 
+**Use arrow functions when you need lexical `this`**, **`new` keyword doesn't work with arrow functions** because arrow functions don't have `this`.
+
 **Arrow function is not hardbound function to the parent `this`**. Arrow function doesn't define `this` keyword at all. Which means if you put a `this` keyword inside an arrow function it's gonna behave like any other variable which means its going to lexically resolve to some enclosing scope that does define `this` keyword.
 
-In this example arrow function doesn't have `this` and its enclosing scope that has `this` is `ask` method.
+In this example arrow function doesn't have `this` and its enclosing scope that has `this` is `ask` method. And depends who is calling `ask` method determine the context of `this` and in this example its `workshop.ask`.
 
 ```js
 var workshop = {
@@ -205,5 +207,3 @@ workshop.ask("What happened to 'this'?");
 workshop.ask.call(workshop, "Still no 'this'?");
 // undefined Still no 'this'?
 ```
-
-**Use arrow functions when you need lexical `this`**
