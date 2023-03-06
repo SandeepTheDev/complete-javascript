@@ -4,7 +4,10 @@
 
 - [Arrow function with `this`](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#arrow-function--lexical-this)
 
-2. `class {}`
+- [ES6 class](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#es6-class)
+
+- [Still loosing `this` in ES6 class](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#still-loosing-this-in-es6-class)
+
 3. Prototypes
 4. Inheritance vs Behavior Delegation (OO vs OLOO)
 
@@ -206,4 +209,123 @@ workshop.ask("What happened to 'this'?");
 
 workshop.ask.call(workshop, "Still no 'this'?");
 // undefined Still no 'this'?
+```
+
+# ES6 class
+
+JavaScript's class system is a whole new mechanism to define class in JavaScript.
+
+```js
+class Workshop {
+  constructor(teacher) {
+    this.teacher = teacher;
+  }
+
+  ask(question) {
+    console.log(this.teacher, question);
+  }
+}
+
+var deepJS = new Workshop("Kyle");
+var reactJS = new Workshop("Suzy");
+
+deepJS.ask("Is 'class' a class?");
+// Kyle Is 'class' a class?
+
+reactJS.ask("Is this class OK?");
+// Suzy Is this class OK?
+```
+
+## ES6 class: extends (Inheritance)
+
+```js
+class Workshop {
+  constructor(teacher) {
+    this.teacher = teacher;
+  }
+
+  ask(question) {
+    console.log(this.teacher, question);
+  }
+}
+
+class AnotherWorkshop extends Workshop {
+  speakUp(msg) {
+    this.ask(msg);
+  }
+}
+
+var JSRecentParts = new AnotherWorkshop("Kyle");
+
+JSRecentParts.speakUp("Are classes getting better?");
+// Kyle Are classes getting better?
+```
+
+## ES6 class: super (relative polymorphism)
+
+The `super` keywords allows you to do relative polymorphism if a child class defines a method of same name as parent class so called shadowing you can refer parent method using `super` from child.
+
+```js
+class Workshop {
+  constructor(teacher) {
+    this.teacher = teacher;
+  }
+
+  ask(question) {
+    console.log(this.teacher, question);
+  }
+}
+
+class AnotherWorkshop extends Workshop {
+  ask(msg) {
+    super.ask(msg.toUpperCase());
+  }
+}
+
+var JSRecentParts = new AnotherWorkshop("Kyle");
+
+JSRecentParts.speakUp("Are classes super?");
+// Kyle ARE CLASSES SUPER?
+```
+
+# Still loosing `this` in ES6 class
+
+```js
+class Workshop {
+  constructor(teacher) {
+    this.teacher = teacher;
+  }
+
+  ask(question) {
+    console.log(this.teacher, question);
+  }
+}
+
+var deepJS = new Workshop("Kyle");
+
+setTimeout(deepJS.ask, 100, "Still loosing 'this'?");
+// undefined Still loosing 'this'?
+```
+
+## Fixing `this`?
+
+The entire class system is built upon this idea that your methods don't exists on your instances they exists on your prototype.
+
+```js
+class Workshop {
+  constructor(teacher) {
+    this.teacher = teacher;
+
+    // `ask` is no longer in prototype its in each instances now.
+    // Every time ask function new copy will be added to each instance.
+    this.ask = (question) => {
+      console.log(this.teacher, question);
+    };
+  }
+}
+
+var deepJS = new Workshop("Kyle");
+
+setTimeout(deepJS.ask, 100, "Still loosing 'this'?");
+// Kyle Still loosing 'this'?
 ```
