@@ -10,7 +10,7 @@
 
 - [Prototypes](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#prototypes)
 
-4. [OLOO Pattern](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#oloo-pattern)
+- [OLOO Pattern](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#oloo-pattern)
 
 # The `this` keyword
 
