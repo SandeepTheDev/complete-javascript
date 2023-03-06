@@ -117,7 +117,7 @@ Number.isNaN("hello world"); // false
 
 ### Negative zero
 
-Negative zero is another special value in JavaScript, operation on it can cause unexpected result like:
+Negative zero is another special value in JavaScript, **for many years JavaScript shows that -0 doesn't exists**.
 
 - Negative zero is neither greater than 0 or lesser than 0.
 - On using .toString() sign bit of negative zero gone.

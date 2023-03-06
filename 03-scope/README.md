@@ -72,6 +72,7 @@ In non strict mode or sloppy mode, Dynamic global variables are created at run-t
 }
 
 openBrowser();
+console.log(query) // "React"
 ```
 
 ## Strict mode
