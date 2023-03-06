@@ -8,8 +8,9 @@
 
 - [Still loosing `this` in ES6 class](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#still-loosing-this-in-es6-class)
 
-3. Prototypes
-4. Inheritance vs Behavior Delegation (OO vs OLOO)
+- [Prototypes](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#prototypes)
+
+4. [OLOO Pattern](https://github.com/SandeepTheDev/complete-javascript/tree/main/04-objects#oloo-pattern)
 
 # The `this` keyword
 
@@ -328,4 +329,105 @@ var deepJS = new Workshop("Kyle");
 
 setTimeout(deepJS.ask, 100, "Still loosing 'this'?");
 // Kyle Still loosing 'this'?
+```
+
+# Prototypes
+
+**Object are built by "constructor calls" (via `new`)**. A "constructor call" makes an object not based on its own prototype. **A "constructor call" makes an object "linked to" its own prototype**.
+
+## Prototypes as "classes"
+
+```js
+function Workshop(teacher) {
+  this.teacher = teacher;
+}
+
+Workshop.prototype.ask = function (question) {
+  console.log(this.teacher, question);
+};
+
+var deepJS = new Workshop("Kyle");
+var reactJS = new Workshop("Suzy");
+
+deepJS.ask("Is 'prototype' a class?");
+// Kyle Is 'prototype' a class?
+
+reactJS.ask("Isn't 'prototype' ugly?");
+// Suzy Isn't 'prototype' ugly?
+```
+
+## Prototype chain
+
+![Prototype Chain](https://github.com/SandeepTheDev/javascript/blob/main/assets/prototype-chain.svg)
+
+## Dunder proto (\_\_proto\_\_)
+
+```js
+function Workshop(teacher) {
+  this.teacher = teacher;
+}
+
+Workshop.prototype.ask = function (question) {
+  console.log(this.teacher, question);
+};
+
+var deepJS = new Workshop("Kyle");
+
+deepJS.constructor === Workshop;
+
+deepJS.__proto__ === Workshop.prototype; // true
+Object.getPrototypeOf(deepJS) === Workshop.prototype; // true
+```
+
+## Prototype inheritance
+
+```js
+function Workshop(teacher) {
+  this.teacher = teacher;
+}
+
+Workshop.prototype.ask = function (question) {
+  console.log(this.teacher, question);
+};
+
+function AnotherWorkshop(teacher) {
+  this.teacher = teacher;
+}
+
+AnotherWorkshop.prototype = Object.create(Workshop.prototype);
+AnotherWorkshop.prototype.speakUp = function (msg) {
+  this.ask(msg.toUpperCase());
+};
+
+var JSRecentParts = new AnotherWorkshop("Kyle");
+
+JSRecentParts.speakUp("Is this actually inheritance?");
+// Kyle IS THIS ACTUALLY INHERITANCE?
+```
+
+# OLOO Pattern
+
+Objects Linked to Other Objects
+
+```js
+var Workshop = {
+  setTeacher(teacher) {
+    this.teacher = teacher;
+  },
+
+  ask(question) {
+    console.log(this.teacher, question);
+  },
+};
+
+var AnotherWorkshop = Object.assign(Object.create(Workshop), {
+  speakUp(msg) {
+    this.ask(msg.toUpperCase());
+  },
+});
+
+var JSRecentParts = Object.create(AnotherWorkshop);
+JSRecentParts.setTeacher("Kyle");
+JSRecentParts.speakUp("But isn't this cleaner?");
+// Kyle BUT ISN'T THIS CLEANER?
 ```
