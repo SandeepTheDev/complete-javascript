@@ -10,12 +10,12 @@ In Event Bubbling, an event propagates from target element to the outermost elem
 
 In Event Capturing, an event propagates from the outermost element to the target element in HTML DOM.
 
-# Handling event bubbling and capturing in addEventHandler
+# Handling event bubbling and capturing in addEventListener
 
-addEventHandler third argument is `useCapture` by default its false, if you want to change the default behavior of event propagation which is bubbling pass third argument as `true`.
+addEventListener third argument is `useCapture` by default its false, if you want to change the default behavior of event propagation which is bubbling pass third argument as `true`.
 
 ```js
-addEventHandler(
+addEventListener(
   "click",
   function handleClick() {},
   true // useCapture
@@ -27,7 +27,7 @@ addEventHandler(
 To stop event propagation use `e.stopPropagation()`
 
 ```js
-addEventHandler(
+addEventListener(
   "click",
   function handleClick(e) {
     e.stopPropagation();
