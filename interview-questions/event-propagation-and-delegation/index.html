@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event Propagation</title>
+    <title>Event Propagation and Delegation</title>
     <style>
-      div {
-        min-width: 100px;
-        min-height: 100px;
+      #grandParent,
+      #parent,
+      #child {
         padding: 30px;
         border: 1px solid #000;
+        min-height: 300px;
       }
-      #grandparent {
+      #grandParent {
         background-color: antiquewhite;
       }
       #parent {
@@ -24,12 +25,21 @@
     </style>
   </head>
   <body>
+    <!-- Event Propagation: Event Bubbling & Event Capturing -->
     <h1>Event Propagation</h1>
-    <div id="grandparent">
+    <div id="grandParent">
       <div id="parent">
         <div id="child"></div>
       </div>
     </div>
+
+    <!-- Event Delegation: Add event handler on the parent -->
+    <h1>Event Delegation</h1>
+    <form id="signup">
+      <input type="text" id="firstName" data-uppercase />
+      <input type="text" id="lastName" data-uppercase />
+      <input type="text" id="email" />
+    </form>
     <script src="index.js"></script>
   </body>
 </html>
