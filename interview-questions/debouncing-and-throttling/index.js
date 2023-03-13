@@ -6,14 +6,33 @@ function getData() {
 
 var debouncedGetData = debounce(getData, 300);
 
-// debounce will return a function and it will call the callback the once delay is done between two key presses.
-function debounce(callback, delay) {
+function debounce(func, delay) {
   var timer;
-  // this function is closed over `timer` if the delay is over setTimeout will call the callback otherwise clear the timer.
+  // this function is closed over `timer` if the delay is over setTimeout will call the func otherwise clear the timer.
   return function () {
+    let args = arguments;
+    let context = this;
     clearTimeout(timer);
     timer = setTimeout(() => {
-      callback.apply(this, arguments);
+      func.apply(context, args);
     }, delay);
+  };
+}
+
+var throttledGetData = throttle(getData, 500);
+
+function throttle(func, limit) {
+  var flag = true;
+  return function () {
+    let args = arguments;
+    let context = this;
+
+    if (flag) {
+      func.apply(context, args);
+      flag = false;
+      setTimeout(() => {
+        flag = true;
+      }, limit);
+    }
   };
 }

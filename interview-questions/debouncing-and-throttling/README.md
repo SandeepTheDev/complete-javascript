@@ -20,4 +20,29 @@ function debounce(func, delay) {
     }, delay);
   };
 }
+
+var throttledGetData = throttle(getData, 500);
+
+function throttle(func, limit) {
+  var flag = true;
+  return function () {
+    let args = arguments;
+    let context = this;
+
+    if (flag) {
+      func.apply(context, args);
+      flag = false;
+      setTimeout(() => {
+        flag = true;
+      }, limit);
+    }
+  };
+}
 ```
+
+## Debouncing vs Throttling
+
+There is no clear cut answer which one is better debouncing or throttling it depends.
+
+1. A shooting game is a good example of throttling.
+2. Search bar is a good example of debouncing.
